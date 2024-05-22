@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.nikola.kotlinmultiplatformexample.data.local.AppDatabase
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.nikola.kotlinmultiplatformexample.data.local.dbFileName
+import com.nikola.kotlinmultiplatformexample.domain.remote.ApiService
 import kotlinx.coroutines.Dispatchers
 
 
@@ -16,4 +17,6 @@ actual class Factory(private val app: Application) {
             .setQueryCoroutineContext(Dispatchers.IO)
             .build()
     }
+
+    actual fun getApi(): ApiService = createCommonApi()
 }

@@ -7,7 +7,8 @@ class AppContainer(
 ) {
     val appRepository: AppRepository by lazy {
         AppRepository(
-            database = factory.getRoomDatabase()
+            database = factory.getRoomDatabase(),
+            api = factory.getApi()
         )
     }
 }

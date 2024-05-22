@@ -1,6 +1,7 @@
 package com.nikola.kotlinmultiplatformexample.android
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(private val repository: AppRepository): ViewModel() {
 
     var listTodos = mutableStateListOf<TodoEntity>()
+    var dataState = mutableStateOf("")
 
 
     init {
@@ -24,6 +26,8 @@ class MainViewModel(private val repository: AppRepository): ViewModel() {
             val todos = repository.getTodos()
             listTodos.clear()
             listTodos.addAll(todos)
+            val data = repository.getDataFromApi()
+            dataState.value = data
         }
     }
 

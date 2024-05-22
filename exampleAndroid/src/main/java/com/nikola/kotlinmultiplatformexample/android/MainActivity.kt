@@ -26,6 +26,10 @@ class MainActivity : ComponentActivity() {
                         model.listTodos.forEach {
                             Text(text = it.todo)
                         }
+
+                        model.dataState.value.let {
+                            Text(text = it)
+                        }
                     }
 
                 }

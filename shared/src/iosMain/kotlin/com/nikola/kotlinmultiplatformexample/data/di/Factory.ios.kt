@@ -5,6 +5,7 @@ import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.nikola.kotlinmultiplatformexample.data.local.AppDatabase
 import com.nikola.kotlinmultiplatformexample.data.local.dbFileName
 import com.nikola.kotlinmultiplatformexample.data.local.instantiateImpl
+import com.nikola.kotlinmultiplatformexample.domain.remote.ApiService
 import platform.Foundation.NSHomeDirectory
 
 actual class Factory {
@@ -19,4 +20,6 @@ actual class Factory {
             .setDriver(BundledSQLiteDriver())
             .build()
     }
+
+    actual fun getApi(): ApiService = createCommonApi()
 }
